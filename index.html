@@ -1,17 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Web Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mashrafi | Projects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-gray-950 text-gray-100">
 
-    <h1>Welcome to My Website</h1>
-    <p>This is a simple paragraph of text on your new HTML page.</p>
-    
-    <!-- This creates a clickable link -->
-    <a href="https://developer.mozilla.org" target="_blank">Visit MDN Web Docs</a>
+  <!-- Navbar -->
+  <nav class="bg-black/80 backdrop-blur-md fixed w-full z-50 border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <h1 class="text-2xl font-bold tracking-tight">mashrafi<span class="text-emerald-400">.</span></h1>
+      <div class="flex gap-8 text-sm">
+        <a href="#projects" class="hover:text-emerald-400 transition">Projects</a>
+        <a href="#about" class="hover:text-emerald-400 transition">About</a>
+        <a href="#" class="hover:text-emerald-400 transition">Blog</a>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Hero -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-6xl md:text-7xl font-bold tracking-tighter mb-6">
+        Hey, I'm <span class="text-emerald-400">Mashrafi</span>
+      </h2>
+      <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto">
+        I build random (but useful) projects for fun.<br>
+        Welcome to my playground.
+      </p>
+      <a href="#projects" 
+         class="inline-block bg-emerald-500 hover:bg-emerald-600 text-black font-semibold px-10 py-4 rounded-xl text-lg transition transform hover:scale-105">
+        Explore Projects →
+      </a>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-24 bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">Featured Projects</h2>
+      <p class="text-gray-400 text-center mb-16">Random tools & experiments I built</p>
+
+      <!-- Password Generator Card -->
+      <div class="max-w-2xl mx-auto bg-gray-800 rounded-3xl p-10 border border-gray-700 hover:border-emerald-500 transition group">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-3xl">
+            🔑
+          </div>
+          <div>
+            <h3 class="text-3xl font-semibold">Random Password Generator</h3>
+            <p class="text-emerald-400">Most Popular Tool</p>
+          </div>
+        </div>
+        
+        <div id="generator" class="bg-gray-900 rounded-2xl p-8">
+          <div class="flex gap-3 mb-6">
+            <input id="password" 
+                   type="text" 
+                   readonly
+                   class="flex-1 bg-gray-800 text-2xl font-mono p-5 rounded-2xl focus:outline-none border border-gray-700">
+            <button onclick="copyPassword()" 
+                    class="bg-gray-700 hover:bg-gray-600 px-6 rounded-2xl transition">
+              📋
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 text-sm">
+            <div>
+              <label class="block text-gray-400 mb-2">Length: <span id="lenValue" class="font-semibold">16</span></label>
+              <input type="range" id="length" min="6" max="32" value="16" 
+                     class="w-full accent-emerald-500" oninput="updateLength()">
+            </div>
+            <div class="flex flex-col gap-3">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="uppercase" checked class="accent-emerald-500"> Uppercase
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="lowercase" checked class="accent-emerald-500"> Lowercase
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="numbers" checked class="accent-emerald-500"> Numbers
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="symbols" class="accent-emerald-500"> Symbols
+              </label>
+            </div>
+          </div>
+
+          <button onclick="generatePassword()" 
+                  class="mt-8 w-full bg-emerald-500 hover:bg-emerald-600 text-black font-semibold py-4 rounded-2xl text-lg transition">
+            Generate New Password
+          </button>
+        </div>
+
+        <p class="text-center text-gray-500 text-sm mt-6">
+          Built in pure HTML + JavaScript
+        </p>
+      </div>
+
+      <!-- More projects placeholder -->
+      <div class="grid md:grid-cols-3 gap-6 mt-20">
+        <div class="bg-gray-800 rounded-2xl p-6 hover:scale-105 transition text-center">
+          <p class="text-4xl mb-4">🚧</p>
+          <h4 class="font-semibold">Coming Soon</h4>
+          <p class="text-gray-400 text-sm">More random tools</p>
+        </div>
+        <div class="bg-gray-800 rounded-2xl p-6 hover:scale-105 transition text-center">
+          <p class="text-4xl mb-4">🚧</p>
+          <h4 class="font-semibold">Coming Soon</h4>
+          <p class="text-gray-400 text-sm">More random tools</p>
+        </div>
+        <div class="bg-gray-800 rounded-2xl p-6 hover:scale-105 transition text-center">
+          <p class="text-4xl mb-4">🚧</p>
+          <h4 class="font-semibold">Coming Soon</h4>
+          <p class="text-gray-400 text-sm">More random tools</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-24 bg-black">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8">About Me</h2>
+      <p class="max-w-2xl mx-auto text-gray-400 text-lg">
+        I'm a passionate developer who loves building small, fun, and practical tools in my free time. 
+        This website is my digital playground where I showcase whatever I'm currently experimenting with.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-12 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 text-center text-gray-500 text-sm">
+      © 2026 Mashrafi • Built with ❤️ and too much coffee
+    </div>
+  </footer>
+
+  <script>
+    function generatePassword() {
+      const length = document.getElementById('length').value;
+      const uppercase = document.getElementById('uppercase').checked;
+      const lowercase = document.getElementById('lowercase').checked;
+      const numbers = document.getElementById('numbers').checked;
+      const symbols = document.getElementById('symbols').checked;
+
+      let chars = "";
+      if (uppercase) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      if (lowercase) chars += "abcdefghijklmnopqrstuvwxyz";
+      if (numbers) chars += "0123456789";
+      if (symbols) chars += "!@#$%^&*()_+[]{}|;:,.<>?";
+
+      if (chars === "") {
+        alert("Please select at least one character type!");
+        return;
+      }
+
+      let password = "";
+      for (let i = 0; i < length; i++) {
+        password += chars[Math.floor(Math.random() * chars.length)];
+      }
+
+      document.getElementById('password').value = password;
+    }
+
+    function copyPassword() {
+      const pass = document.getElementById('password');
+      if (pass.value) {
+        navigator.clipboard.writeText(pass.value);
+        const original = pass.style.borderColor;
+        pass.style.borderColor = "#10b981";
+        setTimeout(() => pass.style.borderColor = original, 800);
+      }
+    }
+
+    function updateLength() {
+      document.getElementById('lenValue').textContent = document.getElementById('length').value;
+    }
+
+    // Generate first password on load
+    window.onload = () => {
+      generatePassword();
+      updateLength();
+    };
+  </script>
 </body>
 </html>
